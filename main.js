@@ -6,7 +6,7 @@ class MorseCodeTranslator {
         this.morseCodeArea.addEventListener('input',()=>{this.latinTextArea.value = this.morseToLatin(this.morseCodeArea.value)});
         
         this.errorsInLatin = [];
-        this.errorsinMorse = [];
+        this.errorsInMorse = [];
 
         //create error text elements
         this.latinErrorTextElement = document.createElement('p');
@@ -97,7 +97,7 @@ class MorseCodeTranslator {
 
             this.errorsInLatin.forEach(error => {
                 this.latinErrorTextElement.innerText += `${error}\n`
-            })
+            });
             
             return morseLetters.join('   ');
         });
@@ -108,18 +108,39 @@ class MorseCodeTranslator {
 
         this.clearErrors();
 
+        //error regexs for, 2 spaces, 4-6space, 8 or more spaces, any character that isnt a . - or space
+        let errorRegexs = [
+        {regex: /(?:[.-][.-])/, message: 'Spacing incorrect - dots and dashes must be space separated'},
+        {regex: /(?:[.-] {2}[.-])/, message: 'Spacing incorrect - 2 space gap detected'},
+        {regex:/(?:[.-] {4,6}[.-])/, message: 'Spacing incorrect - 4 - 6 space gap detected'},
+        {regex:/(?:[.-] {8,}[.-])/, message: 'Spacing incorrect - 8+ space gap detected'},
+        {regex:/[^.\- ]/, message: 'Only . / and spaces are allowed'}];
+
+        //test morse string against each regex and write errors
+        errorRegexs.forEach(r => {
+            if(r.regex.test(sentence)){
+                this.errorsInMorse.push(r.message);
+            }
+        })
+
+        
         let words = sentence.split('       ');
         let latinWords = words.map(word => {
             let letters = word.split('   ');
             let latinLetters = letters.map(letter => Object.keys(this.morseEnglishDictionay).find(key => this.morseEnglishDictionay[key]===letter));
             return latinLetters.join('');
         });
+
+        this.errorsInMorse.forEach(error => {
+            this.morseErrorTextElement.innerText += `${error}\n`
+        });
+
         return latinWords.join(' ');
     }
 
     clearErrors(){
         this.errorsInLatin = [];
-        this.errorsinMorse = [];
+        this.errorsInMorse = [];
         this.latinErrorTextElement.innerText = '';
         this.morseErrorTextElement.innerText = '';
     }
@@ -129,7 +150,7 @@ class MorseCodeTranslator {
 latinText = document.getElementById('latin-chars');
 morseCode = document.getElementById('morse-code');
 
-let t = new MorseCodeTranslator(latinText,morseCode);
+let translator = new MorseCodeTranslator(latinText,morseCode);
 
 
 
