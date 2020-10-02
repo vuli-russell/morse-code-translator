@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: "Special Elite";
+}
+
+body {
+  background-color: #E0D3AF;
+}
+body .title {
+  margin: 20px 0px;
+  text-align: center;
+}
+body .text {
+  text-align: center;
+  margin: 5px;
+}
+body .translator-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+body .translator-container__text-container {
+  width: 100%;
+  height: 30vw;
+  margin: 2%;
+}
+body .translator-container__sub-title {
+  margin: 20px 0px;
+}
+body .translator-container__text-section {
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+  font-size: 20px;
+  background-color: #E0D3AF;
+}

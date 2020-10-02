@@ -4,12 +4,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Morse Code Translator</title>
-    <link rel="stylesheet" href="styles.scss">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Special+Elite">
 </head>
 <body>
-    <textarea id="latin-chars"></textarea>
-    <textarea id="morse-code"></textarea>
-    <button>Translate</button>
+    <h1 class=title>Morse Code Translator</h1>
+    <p class=text>Type into either box to translate Morse Code to latin characters or latin characters to Morse Code</p>
+    <div class=translator-container>
+        <div class=translator-container__text-container>
+            <h2 class=translator-container__sub-title>Latin Characters</h2>
+            <textarea class=translator-container__text-section id="latin-chars"></textarea>
+        </div>
+        
+        <div class=translator-container__text-container>
+            <h2 class=translator-container__sub-title>Morse Code</h2>
+            <textarea class=translator-container__text-section id="morse-code"></textarea>
+        </div>
+    </div>
+
+    
     <script src="main.js"></script>
 </body>
 </html>
