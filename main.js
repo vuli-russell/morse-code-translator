@@ -10,11 +10,11 @@ class MorseCodeTranslator {
 
         //create error text elements
         this.latinErrorTextElement = document.createElement('p');
-        this.latinErrorTextElement.classList.add('.translator-container__error-text');
+        this.latinErrorTextElement.classList.add('translator-container__error-text');
         this.latinTextArea.parentElement.append(this.latinErrorTextElement);
 
         this.morseErrorTextElement = document.createElement('p');
-        this.morseErrorTextElement.classList.add('.translator-container__error-text');
+        this.morseErrorTextElement.classList.add('translator-container__error-text');
         this.morseCodeArea.parentElement.append(this.morseErrorTextElement);
         
 

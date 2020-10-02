@@ -35,3 +35,7 @@ body .translator-container__text-section {
   font-size: 20px;
   background-color: #E0D3AF;
 }
+body .translator-container__error-text {
+  margin-top: 10px;
+  color: red;
+}

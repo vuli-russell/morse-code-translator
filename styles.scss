@@ -39,5 +39,10 @@ body {
             font-size: 20px;
             background-color: #E0D3AF;
         }
+
+        &__error-text{
+            margin-top: 10px;
+            color: red;
+        }
     }
 }
