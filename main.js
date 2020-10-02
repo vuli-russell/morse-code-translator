@@ -1,4 +1,4 @@
-const morseToEnglishDictionay ={
+const morseEnglishDictionay ={
     'A':'• −',
     'B':'− • • •',
     'C':'− • − •',	
@@ -58,12 +58,31 @@ const morseToEnglishDictionay ={
     "\"":'• − • • − •',
     '@':'• − − • − •',
     '=':'− • • • −',
+
+    '':''
 }
 
 
-const characterToMorse = (char) => {
-    
-}
+const characterToMorse = char => morseEnglishDictionay[char.toUpperCase()];
 
+
+const wordToMorse = word => {
+    let letters = word.split('');
+    let morseLetters = letters.map(letter => characterToMorse(letter))
+    return morseLetters.join('   ');
+};
+
+const sentenceToMorse = sentence => {
+    let words = sentence.split(' ');
+    let morseWords = words.map(word => wordToMorse(word))
+    return morseWords.join('       ');
+};
+
+latinText = document.getElementById('latin-chars');
+morseCode = document.getElementById('morse-code');
+
+document.querySelector('button').addEventListener('click',()=>{
+    morseCode.value = sentenceToMorse(latinText.value);
+})
 
 
